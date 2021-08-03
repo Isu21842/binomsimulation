@@ -1,0 +1,40 @@
+---
+title: "binomial simulation"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Create a binomial distribution simulation for educational purposes
+
+## Here is the code
+
+```{r binom simulation}
+# The number of simulations to run; set as a parameter
+simruns<-100
+
+# Function to generate binomial distribution simulation
+binomsim<-function(simruns){
+  
+  # Create blank vector to store results
+  results<-rep(0,simruns)
+ 
+  for(b in 1:simruns){
+    # Fill up the results vector with the sum of this function
+    results[b]<-sum(rbinom(10,1,0.95))
+  }
+  
+  return(results)
+}
+
+# Generate the simulation and store it
+gensim<-binomsim(simruns)
+
+# Show us the histogram
+hist(gensim,breaks=c(0:10),xlim=c(0,10),col="lightblue3")
+```
